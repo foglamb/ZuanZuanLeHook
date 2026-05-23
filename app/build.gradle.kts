@@ -26,7 +26,6 @@ android {
 }
 
 dependencies {
-    // Xposed API - compileOnly 因为框架会提供
-    compileOnly("de.robv.android.xposed:api:82")
-    compileOnly("de.robv.android.xposed:api:82:sources")
+    // 使用本地 Xposed API stub（LSPosed 框架运行时提供）
+    compileOnly(file("libs/xposed-api-82.jar"))
 }
