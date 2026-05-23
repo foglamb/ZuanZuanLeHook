@@ -26,6 +26,5 @@ android {
 }
 
 dependencies {
-    // 使用本地 Xposed API stub（LSPosed 框架运行时提供）
-    compileOnly(file("libs/xposed-api-82.jar"))
+    // Xposed API 以源码 stub 形式包含在项目中，不需要额外依赖
 }
