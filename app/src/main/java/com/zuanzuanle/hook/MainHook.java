@@ -27,14 +27,14 @@ public class MainHook implements IXposedHookLoadPackage {
         try {
             Class<?> c = cl.loadClass("com.cka.renren.v2.ui.mine.api.YXMineNet");
             hookX(c, "adTask", new XC_MethodHook() {
-                @Override protected void before(MethodHookParam p) { log("adTask " + args(p.args)); }
-                @Override protected void after(MethodHookParam p) { log("adTask=" + p.getResult()); }
+                @Override protected void beforeHookedMethod(MethodHookParam p) { log("adTask " + args(p.args)); }
+                @Override protected void afterHookedMethod(MethodHookParam p) { log("adTask=" + p.getResult()); }
             });
             hookX(c, "adRegister", new XC_MethodHook() {
-                @Override protected void before(MethodHookParam p) { log("adRegister " + args(p.args)); }
+                @Override protected void beforeHookedMethod(MethodHookParam p) { log("adRegister " + args(p.args)); }
             });
             hookX(c, "getTeaGol", new XC_MethodHook() {
-                @Override protected void after(MethodHookParam p) { log("getTeaGol=" + p.getResult()); }
+                @Override protected void afterHookedMethod(MethodHookParam p) { log("getTeaGol=" + p.getResult()); }
             });
             log("YXMineNet OK");
         } catch (Exception e) { log("YXMineNet FAIL: " + e.getMessage()); }
@@ -44,7 +44,7 @@ public class MainHook implements IXposedHookLoadPackage {
         try {
             Class<?> c = cl.loadClass("com.cka.renren.vm.MineVM");
             hookAll(c, "forecast_gold", new XC_MethodHook() {
-                @Override protected void after(MethodHookParam p) {
+                @Override protected void afterHookedMethod(MethodHookParam p) {
                     if (p.getResult() instanceof Number)
                         log("forecast_gold=" + ((Number)p.getResult()).intValue());
                 }
@@ -57,7 +57,7 @@ public class MainHook implements IXposedHookLoadPackage {
         try {
             Class<?> c = cl.loadClass("com.cka.renren.main.mine.YqKtFragment");
             hookAll(c, "isRedPacketInCooldown", new XC_MethodHook() {
-                @Override protected void before(MethodHookParam p) { log("冷却=false"); p.setResult(false); }
+                @Override protected void beforeHookedMethod(MethodHookParam p) { log("冷却=false"); p.setResult(false); }
             });
             log("红包OK");
         } catch (Exception e) { log("红包FAIL: " + e.getMessage()); }
@@ -67,7 +67,7 @@ public class MainHook implements IXposedHookLoadPackage {
         try {
             Class<?> b = cl.loadClass("okhttp3.Request$Builder");
             hookAll(b, "build", new XC_MethodHook() {
-                @Override protected void after(MethodHookParam p) {
+                @Override protected void afterHookedMethod(MethodHookParam p) {
                     try {
                         Object req = p.getResult();
                         String url = XposedHelpers.callMethod(req, "url").toString();
