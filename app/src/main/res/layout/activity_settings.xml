@@ -45,7 +45,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_coin_hook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_redpacket_hook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_ad_hook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_net_hook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_token_hook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
                     android:textSize="12sp"
                     android:textColor="#FF888888"/>
             </LinearLayout>
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_log_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
