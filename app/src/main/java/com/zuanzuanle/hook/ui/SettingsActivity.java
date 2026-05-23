@@ -2,9 +2,10 @@ package com.zuanzuanle.hook.ui;
 
 import android.os.Bundle;
 import android.widget.*;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AlertDialog;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.preference.PreferenceManager;
 import com.zuanzuanle.hook.R;
 
@@ -33,10 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         logViewBtn = findViewById(R.id.btn_log_view);
         aboutBtn = findViewById(R.id.btn_about);
         
-        // 加载保存的设置
         loadSettings();
-        
-        // 保存开关状态
         enableCoinHook.setOnCheckedChangeListener((v, c) -> saveSettings());
         enableRedPacketHook.setOnCheckedChangeListener((v, c) -> saveSettings());
         enableAdHook.setOnCheckedChangeListener((v, c) -> saveSettings());
@@ -44,33 +42,13 @@ public class SettingsActivity extends AppCompatActivity {
         enableTokenHook.setOnCheckedChangeListener((v, c) -> saveSettings());
         enableLogOutput.setOnCheckedChangeListener((v, c) -> saveSettings());
         
-        // 金币上限输入
-        coinLimitEdit.setOnEditorActionListener((v, a, e) -> {
-            saveSettings();
-            return false;
-        });
+        logViewBtn.setOnClickListener(v -> startActivity(LogViewActivity.newIntent(this)));
         
-        // 日志查看按钮
-        logViewBtn.setOnClickListener(v -> {
-            startActivity(LogViewActivity.newIntent(this));
-        });
-        
-        // 关于按钮
-        aboutBtn.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                .setTitle("关于 赚赚乐Hook")
-                .setMessage("版本: 1.0\n\n" +
-                    "功能:\n" +
-                    "• 金币叠加上限修改\n" +
-                    "• 移除红包冷却\n" +
-                    "• 自动拦截广告上报\n" +
-                    "• 捕获广告奖励transId\n" +
-                    "• 网络请求拦截\n" +
-                    "• Token获取\n\n" +
-                    "目标: com.yxrjhan.douxiong v4.1.0.99")
-                .setPositiveButton("确定", null)
-                .show();
-        });
+        aboutBtn.setOnClickListener(v -> new AlertDialog.Builder(this)
+            .setTitle("关于 赚赚乐Hook")
+            .setMessage("版本: 1.0\n目标: com.yxrjhan.douxiong v4.1.0.99\n\n功能:\n• 金币叠加上限修改\n• 移除红包冷却\n• 自动拦截广告上报\n• 捕获广告奖励transId\n• 网络请求拦截\n• Token获取")
+            .setPositiveButton("确定", null)
+            .show());
     }
     
     private void loadSettings() {
