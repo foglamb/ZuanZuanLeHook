@@ -25,14 +25,6 @@ android {
     }
 }
 
-repositories {
-    google()
-    mavenCentral()
-    maven { url = uri("https://api.xposed.info/repository") }
-    maven { url = uri("https://maven.xposed.info/repository") }
-    maven { url = uri("https://jitpack.io") }
-}
-
 dependencies {
     // Xposed API - compileOnly 因为框架会提供
     compileOnly("de.robv.android.xposed:api:82")
