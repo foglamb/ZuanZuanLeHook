@@ -26,8 +26,6 @@ android {
 }
 
 dependencies {
-    // AndroidX 支持库 - 用于设置界面和日志界面
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.preference:preference:1.2.1")
+    // Xposed API compileOnly - 不打包进APK
+    compileOnly("de.robv.android.xposed:api:82")
 }

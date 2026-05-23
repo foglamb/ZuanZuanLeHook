@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 
 public class MainHook implements IXposedHookLoadPackage {
     private static final String TAG = "ZZL_HOOK";
-    private static final String TARGET_PKG = "com.yxrjhan.douxiong";
+    private static final String TARGET_PKG = "com.yxrjshun.yingkeji";
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam p) throws Throwable {
