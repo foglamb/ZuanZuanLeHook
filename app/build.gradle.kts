@@ -26,5 +26,8 @@ android {
 }
 
 dependencies {
-    // Xposed API 以源码 stub 形式包含在项目中，不需要额外依赖
+    // AndroidX 支持库 - 用于设置界面和日志界面
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.preference:preference:1.2.1")
 }
