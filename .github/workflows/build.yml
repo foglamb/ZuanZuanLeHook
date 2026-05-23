@@ -24,50 +24,47 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    # 3. 设置 Android 命令行工具
-    - name: Set up Android Command Line Tools
+    # 3. 设置 Android SDK
+    - name: Set up Android SDK
       run: |
-        wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-        unzip -q commandlinetools-linux-11076708_latest.zip
-        mkdir -p $HOME/android/cmdline-tools/latest
-        mv cmdline-tools/* $HOME/android/cmdline-tools/latest/
-        echo "ANDROID_HOME=$HOME/android" >> $GITHUB_ENV
-        echo "$HOME/android/cmdline-tools/latest/bin" >> $GITHUB_PATH
-        echo "$HOME/android/platform-tools" >> $GITHUB_PATH
+        # 使用系统预装的 Android SDK
+        echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+        echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+        echo "/usr/local/lib/android/sdk/platform-tools" >> $GITHUB_PATH
+        echo "/usr/local/lib/android/sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
+        # 清空可能冲突的环境变量
+        echo "ANDROID_NDK_HOME=""" >> $GITHUB_ENV
         
-    # 4. 接受 Android 许可证
-    - name: Accept Android licenses
+    # 4. 确认 SDK 安装
+    - name: Verify SDK
       run: |
-        yes | sdkmanager --licenses || true
+        ls -la $ANDROID_HOME/
+        ls -la $ANDROID_HOME/platforms/ 2>/dev/null || echo "需要安装platforms"
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" || echo "使用预装SDK"
         
-    # 5. 安装必要的 SDK 组件
-    - name: Install Android SDK components
-      run: |
-        sdkmanager "platform-tools"
-        sdkmanager "platforms;android-34"
-        sdkmanager "build-tools;34.0.0"
-        
-    # 6. 给 Gradle 执行权限
+    # 5. 给 Gradle 执行权限
     - name: Make gradlew executable
       run: |
         if [ -f gradlew ]; then
           chmod +x gradlew
         fi
         
-    # 7. 构建 APK
+    # 6. 构建 APK
     - name: Build APK with Gradle
       run: |
-        ./gradlew assembleDebug --stacktrace --info || \
-        gradle assembleDebug --stacktrace --info
+        # 移除 local.properties 避免与系统设置冲突
+        rm -f local.properties
+        ./gradlew assembleDebug --stacktrace --info
         
-    # 8. 查找生成的 APK
+    # 7. 查找生成的 APK
     - name: Find APK
       run: |
         echo "查找生成的APK文件..."
         find . -name "*.apk" -type f
         ls -lah app/build/outputs/apk/debug/ 2>/dev/null || echo "Debug目录不存在"
         
-    # 9. 上传 APK
+    # 8. 上传 APK
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
@@ -77,12 +74,12 @@ jobs:
           **/*.apk
         retention-days: 30
         
-    # 10. 显示构建信息
+    # 9. 显示构建信息
     - name: Build Summary
+      if: success()
       run: |
         echo "### 🎉 构建完成！" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**APK 文件位置:**" >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        find . -name "*.apk" -type f >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
+        echo "**下载 APK 步骤:**" >> $GITHUB_STEP_SUMMARY
+        echo "1. 在页面底部的 Artifacts 区域下载 ZuanZuanLeHook-APK" >> $GITHUB_STEP_SUMMARY
+        echo "2. 解压后即可获得 app-debug.apk" >> $GITHUB_STEP_SUMMARY
