@@ -158,6 +158,34 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+        <!-- Token获取 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Token获取"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="拦截并展示登录Token"
+                    android:textSize="12sp"
+                    android:textColor="#FF888888"/>
+            </LinearLayout>
+            <Switch
+                android:id="@+id/switch_token_hook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+        </LinearLayout>
                 <TextView
                     android:text="日志输出"
                     android:textSize="16sp"
