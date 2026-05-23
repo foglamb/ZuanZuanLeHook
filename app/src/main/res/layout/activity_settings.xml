@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,6 +18,8 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"/>
+
+        <!-- 金币叠加上限 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +47,8 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
+
+        <!-- 金币上限值输入 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +70,8 @@
                 android:layout_marginLeft="8dp"
                 android:background="@android:drawable/editbox_background"/>
         </LinearLayout>
+
+        <!-- 红包冷却移除 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,6 +99,8 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
+
+        <!-- 广告上报拦截 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,6 +128,8 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
+
+        <!-- 网络请求拦截 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,18 +157,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+
         <!-- Token获取 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -186,6 +186,20 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
+
+        <!-- 日志输出 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
                 <TextView
                     android:text="日志输出"
                     android:textSize="16sp"
@@ -201,6 +215,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"/>
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_log_view"
             android:layout_width="match_parent"
@@ -208,6 +223,7 @@
             android:text="📋 查看运行日志"
             android:textAllCaps="false"
             android:layout_marginBottom="8dp"/>
+
         <Button
             android:id="@+id/btn_about"
             android:layout_width="match_parent"
@@ -215,5 +231,6 @@
             android:text="ℹ️ 关于模块"
             android:textAllCaps="false"
             android:layout_marginBottom="8dp"/>
+
     </LinearLayout>
 </ScrollView>
