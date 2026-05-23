@@ -1,37 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zuanzuanle.hook">
-
     <application
-        android:label="@string/app_name"
+        android:label="赚赚乐Hook"
         android:allowBackup="true"
-        android:hasCode="true"
-        android:theme="@style/Theme.ZuanZuanLeHook">
-
-        <!-- 设置界面 -->
-        <activity android:name=".ui.SettingsActivity"
-            android:exported="true"
-            android:label="赚赚乐Hook设置">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- 日志界面 -->
-        <activity android:name=".ui.LogViewActivity"
-            android:exported="false"
-            android:label="Hook运行日志" />
-
+        android:hasCode="true">
         <meta-data
             android:name="xposedmodule"
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="赚赚乐自动过广告 v1.0" />
+            android:value="瞬影科技赚赚乐自动过广告" />
         <meta-data
             android:name="xposedminversion"
             android:value="53" />
-
     </application>
 </manifest>
