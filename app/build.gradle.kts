@@ -23,9 +23,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    // 排除 stub 目录 - 不让它参与编译打包
+    sourceSets {
+        getByName("main") {
+            java {
+                setSrcDirs(listOf("src/main/java"))
+            }
+        }
+    }
 }
 
 dependencies {
-    // Xposed API compileOnly - 不打包进APK
-    compileOnly("de.robv.android.xposed:api:82")
+    // 无需Xposed依赖
 }
