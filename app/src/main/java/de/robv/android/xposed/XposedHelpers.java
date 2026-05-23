@@ -1,5 +1,6 @@
 package de.robv.android.xposed;
 
+import de.robv.android.xposed.callbacks.XC_MethodHook;
 import java.lang.reflect.*;
 
 public class XposedHelpers {
