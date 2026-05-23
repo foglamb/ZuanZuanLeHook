@@ -25,8 +25,14 @@ android {
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+    maven { url = uri("https://api.xposed.info/repository") }
+    maven { url = uri("https://jitpack.io") }
+}
+
 dependencies {
     compileOnly("de.robv.android.xposed:api:82")
     compileOnly("de.robv.android.xposed:api:82:sources")
-    implementation("org.json:json:20231013")
 }
